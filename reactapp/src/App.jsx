@@ -34,19 +34,21 @@ class App extends Component {
   
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">GitHub API Project</h1>
-        </header>
-        <hr></hr>
-        <Form
-          formData={this.state.formData}
-          handleUserFormSubmit={this.handleUserFormSubmit}
-          handleFormChange={this.handleFormChange}
-        />
-        <hr></hr>
-        Profile:
-        <Profile infoclean={this.state.infoclean}/>
+      <div className="container">
+        <div class ="jumbotron">
+          <header className="App-header">
+            <h1 className="App-title">GitHub API Project</h1>
+          </header>
+          <hr></hr>
+          <Form
+           formData={this.state.formData}
+           handleUserFormSubmit={this.handleUserFormSubmit}
+           handleFormChange={this.handleFormChange}
+          />
+          <hr></hr>
+          <h2>Profile:</h2>
+          <Profile infoclean={this.state.infoclean}/>
+        </div>
       </div>
     );
   }
