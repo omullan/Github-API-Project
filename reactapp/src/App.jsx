@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Form from './components/form.jsx';
 import Profile from './components/profile.jsx';
+import Graph from './components/graph.jsx';
 
 class App extends Component {
   constructor() {
@@ -9,6 +10,7 @@ class App extends Component {
     this.state = {
       gitun: 'No username',
       infoclean : '',
+      repositories : '',
       formData: {
         username: '',
       },
@@ -19,10 +21,17 @@ class App extends Component {
 
   handleUserFormSubmit(event) {
     event.preventDefault();
-       axios.get('https://api.github.com/users/'+this.state.formData.username)
+       axios.get('https://api.github.com/users/'+this.state.formData.username + '?access_token=b15a874f5b418f981743a10f7c8a6202c1f0206c')
     .then(response => this.setState({
       gitun: response.data.login,
       infoclean: response.data,
+    })).catch((err) => { console.log(err); });
+
+    this.setState({infoclean : ' '});
+    this.setState({repositories : ' '});
+    axios.get('https://api.github.com/users/'+this.state.formData.username+'/repos?access_token=b15a874f5b418f981743a10f7c8a6202c1f0206c')
+      .then(response => this.setState({
+      repositories : response.data,
     })).catch((err) => { console.log(err); });
   };
 
@@ -46,8 +55,8 @@ class App extends Component {
            handleFormChange={this.handleFormChange}
           />
           <hr></hr>
-          <h2>Profile:</h2>
           <Profile infoclean={this.state.infoclean}/>
+          <Graph repositories={this.state.repositories}/>
         </div>
       </div>
     );
