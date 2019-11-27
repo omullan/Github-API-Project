@@ -21,7 +21,7 @@ class App extends Component {
 
   handleUserFormSubmit(event) {
     event.preventDefault();
-       axios.get('https://api.github.com/users/'+this.state.formData.username + '?access_token=b15a874f5b418f981743a10f7c8a6202c1f0206c')
+       axios.get('https://api.github.com/users/'+this.state.formData.username + '?access_token=fbc883ebf5403681b6d67a3329bcace44c2db5a5')
     .then(response => this.setState({
       gitun: response.data.login,
       infoclean: response.data,
@@ -29,7 +29,7 @@ class App extends Component {
 
     this.setState({infoclean : ' '});
     this.setState({repositories : ' '});
-    axios.get('https://api.github.com/users/'+this.state.formData.username+'/repos?access_token=b15a874f5b418f981743a10f7c8a6202c1f0206c')
+    axios.get('https://api.github.com/users/'+this.state.formData.username+'/repos?access_token=fbc883ebf5403681b6d67a3329bcace44c2db5a5')
       .then(response => this.setState({
       repositories : response.data,
     })).catch((err) => { console.log(err); });
@@ -44,7 +44,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <div class ="jumbotron">
+        <div class="jumbotron">
           <header className="App-header">
             <h1 className="App-title">GitHub API Project</h1>
           </header>
@@ -55,8 +55,10 @@ class App extends Component {
            handleFormChange={this.handleFormChange}
           />
           <hr></hr>
-          <Profile infoclean={this.state.infoclean}/>
-          <Graph repositories={this.state.repositories}/>
+          <div class="row">
+            <div class="col-md-6 text-left"><Profile infoclean={this.state.infoclean}/></div>
+            <div class="col-md-6 text-left"><Graph repositories={this.state.repositories}/></div>
+          </div>
         </div>
       </div>
     );
