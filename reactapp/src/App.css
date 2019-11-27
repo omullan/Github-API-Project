@@ -1,5 +1,12 @@
 body {
-    background-color: #EAFF7B;
+    background-image: url("https://www.larutadelsorigens.cat/filelook/full/116/1160151/hd-pattern-wallpapers-1080p.png");
     text-align: center;
-  }
+
+}
+
+.jumbotron {
+  background-color: #FFFFFF!important;
+}
+
+
   

@@ -27,12 +27,6 @@ const graph = (props) => {
                 }
             }
         }
-        console.log(languageList.length)
-        for(var i = 0; i < languageList.length; i++) {
-
-            console.log(languageList[i]);
-            console.log(languageCount[i]);
-        }
         
         return (
             <div class = "row">
