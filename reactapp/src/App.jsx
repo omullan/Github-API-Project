@@ -21,7 +21,7 @@ class App extends Component {
 
   handleUserFormSubmit(event) {
     event.preventDefault();
-       axios.get('https://api.github.com/users/'+this.state.formData.username + '?access_token=bea239d60635a2ec96fbe13db61b4708eabb1fa2')
+       axios.get('https://api.github.com/users/'+this.state.formData.username + '?access_token=caafbb4d4707561d30d114745a82780202a3d30d')
     .then(response => this.setState({
       gitun: response.data.login,
       infoclean: response.data,
@@ -29,7 +29,7 @@ class App extends Component {
 
     this.setState({infoclean : ' '});
     this.setState({repositories : ' '});
-    axios.get('https://api.github.com/users/'+this.state.formData.username+'/repos?access_token=bea239d60635a2ec96fbe13db61b4708eabb1fa2')
+    axios.get('https://api.github.com/users/'+this.state.formData.username+'/repos?access_token=caafbb4d4707561d30d114745a82780202a3d30d')
       .then(response => this.setState({
       repositories : response.data,
     })).catch((err) => { console.log(err); });
